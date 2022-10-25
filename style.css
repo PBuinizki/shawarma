@@ -79,12 +79,12 @@ h2 {
 /*     flex-shrink: 1; */
 }
 .sidebar-tabs {
-    max-width: calc(var(--content) / 4);
+/*     max-width: calc(var(--content) / 4); */
 /*     min-width: 35rem;
     flex-grow: 2; */
-    border: 1px solid #000;
+/*     border: 1px solid #000;
     margin-left: calc(var(--padding) / 8);
-    padding: var(--padding);
+    padding: var(--padding); */
 
 }
 .cart-tabs {
