@@ -1,0 +1,277 @@
+*,*::before,*::after {padding: 0;margin: 0;border: 0;box-sizing: border-box;}
+
+
+@font-face {
+  font-family: "AdigianaExtreme";
+  font-display: swap;
+  src: url("../fonts/AdigianaExtreme.woff2") format("woff2"), url("../fonts/AdigianaExtreme.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "CyrillicCompressed";
+  font-display: swap;
+  src: url("../fonts/cyrilliccompressedmedium.woff2") format("woff2"), url("../fonts/cyrilliccompressedmedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+/**
+* _header.css - шапка, кнопка бургер, плашка с меню (специальный id)
+* _actions.css - оформление карточек : svg круги, изображения через абсолют, текст без вырывания из карточки, высота автоматом + ширина
+* _sidebar.css - боковая плашка, скрыта до брейпоинта, внутри 2 табла, один со специальным id
+* _catalog.css - стилизация элементов списка под карточки, 2 svg абсолютно позиционированных,адаптивные изображения с маской, выота автоматом под текст, кнопка с крутящимся текстом вокруг
+* _footer.css - список контактов, дырявый бордер
+* _widgets.css - кнопки "корзина", " ватсапп" и анимация загрузки
+* 404.css - стили для страницы 404
+* cart.css - стили для мини корзины
+* thankyou.css - стили для страницы благодарности
+* index.css - стили для главной страницы
+* 
+
+1. Разметка должна быть выполнена на flex
+2. Шапка всегда должна быть ввержу, а подвал в низу (mh 100vh)
+3. Сайдбар должен скрываться при сужении контейнера
+4. Размеры: изображений, текста, карточек должны зависеть от размера экрана
+5. Меню в мобильном режиме должно быть в виде полноэкранной плашки
+6. Корзина в мобильной версии должна быть в виде полноэкранной плашки
+
+**/
+
+:root {
+    --padding: calc( (100vw - 20rem) / 10 + 2rem );
+    --font-size: calc( (100vmax - 20rem) / 200 + 1rem );
+    --content: calc( 100vw - (2 * var(--padding)) );
+    --card-size: calc( ((100vw - 20rem) / 100 * (25 - 17.5) + 17.5rem ));
+}
+
+html, body{
+    height: 100%;
+}
+
+body {
+    background-color: #BFEB9C;
+}
+
+main {
+    padding: 0 var(--padding);
+    font-size: var(--font-size);
+    font-family: "CyrillicCompressed", Arial, Helvetica, sans-serif;
+    line-height: 146%;
+    display: flex;
+    flex-direction: row;
+}
+
+h2 {
+    font-size: calc(var(--font-size) * 2.5);
+    font-family: "AdigianaExtreme", Arial, Helvetica, sans-serif;
+    line-height: 1.2;
+}
+
+
+.phone {
+}
+.button {
+}
+.catalog {
+    max-width: calc(var(--content) / 4 * 3 );
+/*     flex-shrink: 1; */
+}
+.sidebar-tabs {
+    max-width: calc(var(--content) / 4);
+/*     min-width: 35rem;
+    flex-grow: 2; */
+    border: 1px solid #000;
+    margin-left: calc(var(--padding) / 8);
+    padding: var(--padding);
+
+}
+.cart-tabs {
+}
+.checkout-tabs {
+}
+
+
+.products {
+    display: flex;
+    flex-flow: row wrap;
+    max-width: var(--content);
+    gap: calc(var(--padding) / 6);
+
+}
+
+
+.product {
+    list-style: none;
+    flex: 1 1 var(--card-size);
+    min-height: 47rem;
+    height: 100%;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+/*     overflow-y: hidden; */
+}
+
+.product p,
+.product h2 {
+    width: fit-content;
+    align-self: flex-start;
+    padding: 1.5rem 1rem 0;
+    z-index: 2;
+    color: #fff;
+}
+
+.product h2 {
+    font-weight: normal;
+}
+
+.product:nth-of-type(1n) {
+    background: #397198;
+
+}
+
+.product:nth-of-type(2n) {
+    background: #F3A249;
+}
+
+.product:nth-of-type(3n) {
+    background: #359C93;
+}
+
+.product:nth-of-type(4n) {
+    background: #9F523C;
+}
+
+.product:nth-of-type(1n) h2 {
+    color: #D8AB51;
+
+}
+
+.product:nth-of-type(2n) h2 {
+    color: #DB1E06;
+}
+
+.product:nth-of-type(3n) h2 {
+    color: #B74F64;
+}
+
+.product:nth-of-type(4n) h2 {
+    color: #FAB62F;
+}
+
+.product:nth-of-type(1n) path {
+    fill: #246289;
+
+}
+
+.product:nth-of-type(2n) path {
+    fill: #EA9134;
+}
+
+.product:nth-of-type(3n) path {
+    fill: #008179;
+}
+
+.product:nth-of-type(4n) path {
+    fill: #BA5231;
+}
+
+.product:nth-of-type(1n) circle {
+    fill: #91BCDA;
+
+}
+
+.product:nth-of-type(2n) circle {
+    fill: #DDB589;
+}
+
+.product:nth-of-type(3n) circle {
+    fill: #7ec1bd;
+}
+
+.product:nth-of-type(4n) circle {
+    fill: #efb9a9;
+}
+
+.svg-bg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+}
+
+.product-bottom {
+    width: 100%;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+}
+
+.add-to-cart {
+    position: relative;
+    width: 7.5rem;
+    height: 7.5rem;
+    text-align: justify;
+
+}
+
+.add-to-cart svg textPath {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.add-to-cart button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    width: 3.75rem;
+    height: 3.75rem;
+    background-color: #DB1E06;
+    color: #fff;
+    font-size: var(--font-size);
+    font-weight: bold;
+}
+
+span.price {
+    font-size: calc(var(--font-size) * 2.25);
+    color: #000;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 1px;
+}
+
+.text-circle {
+    animation-name: rotation;
+    animation-delay: -9s;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.product:nth-of-type(2n) .text-circle {
+    animation-delay: -6s;
+}
+
+.product:nth-of-type(3n) .text-circle {
+    animation-delay: -3s;
+}
+
+.product:nth-of-type(4n) .text-circle {
+    animation-delay: 0s;
+}
+
+@keyframes rotation {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
