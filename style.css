@@ -75,7 +75,8 @@ h2 {
 .button {
 }
 .catalog {
-    max-width: calc(var(--content) / 4 * 3 );
+    max-width: var(--content);
+/*     max-width: calc(var(--content) / 4 * 3 ); */
 /*     flex-shrink: 1; */
 }
 .sidebar-tabs {
