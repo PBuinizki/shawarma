@@ -120,6 +120,21 @@ display: grid;
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
+    justify-content: end;
+}
+
+.product-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 390px;
+    object-fit: cover;
+    aspect-ratio: 1 / 2;
+    -webkit-mask-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzkxIiBoZWlnaHQ9IjM1MCIgdmlld0JveD0iMCAwIDM5MSAzNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIDBMMzkxIDguMDM2NzJlLTA1QzM5MSA4LjAzNjcyZS0wNSAzODkuNjc3IDE0MS45MjggMzc1LjQ3OSAyMjQuNDcxQzM2NS45NjcgMjc5Ljc3NCAzNTYuMzg1IDI5MS4yNjYgMzIyLjQxMiAzMTkuMjc2QzI4NS4yOTIgMzQ5Ljg4IDI0NC44MTIgMzUwIDE4NS43MzcgMzUwQzEyMC4xNTMgMzUwIDgwLjEwMjMgMzE5LjI3NiA4MC4xMDIzIDMxOS4yNzZDODAuMTAyMyAzMTkuMjc2IDM0LjU0NDEgMjg2LjM1OCAyMy4wMjk3IDIzOS4yMTFDMC42NDExMDYgMTQ3LjUzOSAwIDAgMCAwWiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg==");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center;
 }
 
 .product p,
@@ -217,6 +232,8 @@ display: grid;
     justify-content: space-between;
     align-items: center;
     z-index: 2;
+    flex-grow: 1;
+    justify-self: flex-end;
 }
 
 .add-to-cart {
@@ -253,7 +270,7 @@ display: grid;
 }
 
 .add-to-cart button:active {
-    content: '-';
+    background: #FAB62F;
 }
 
 .add-to-cart button:focus {
