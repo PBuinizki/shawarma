@@ -1,5 +1,9 @@
 *,*::before,*::after {padding: 0;margin: 0;border: 0;box-sizing: border-box;}
 
+*:focus {
+    box-shadow: 1px 1px 25px red;
+}
+
 
 @font-face {
   font-family: "AdigianaExtreme";
@@ -15,6 +19,47 @@
   font-weight: 500;
   font-style: normal;
 }
+
+@font-face {
+    font-family: 'icomoon';
+    src:  url('fonts/icomoon.eot?7qqzbg');
+    src:  url('fonts/icomoon.eot?7qqzbg#iefix') format('embedded-opentype'),
+      url('fonts/icomoon.ttf?7qqzbg') format('truetype'),
+      url('fonts/icomoon.woff?7qqzbg') format('woff'),
+      url('fonts/icomoon.svg?7qqzbg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-geo:before {
+    content: "\e900";
+  }
+  .icon-phone:before {
+    content: "\e901";
+  }
+  .icon-vk:before {
+    content: "\e902";
+  }
+  .icon-whatsapp:before {
+    content: "\e903";
+  }
+  
 
 
 /**
@@ -54,6 +99,12 @@ body {
     background-color: #BFEB9C;
 }
 
+
+header {
+    padding-bottom: calc(var(--font-size) * 3);
+}
+
+
 main {
 /*     min-width: var(--content); */
     padding: 0 var(--padding);
@@ -65,13 +116,77 @@ main {
     justify-content: space-between;
 }
 
-h2 {
+.logo {
+    font-family: "AdigianaExtreme", Arial, Helvetica, sans-serif;
+    font-size: calc(var(--font-size));
+    text-decoration: none;
+    color: #000;
+}
+
+.logo > h1 {
+    color: #F7B42F;
+    -webkit-text-fill-color: #DB1E06;
+    -webkit-text-stroke: 1px;
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+    font-weight: 400;
+}
+
+.header-menu {
+    position: fixed;
+    z-index: 999;
+    background: #BFEB9C;
+    width: 100%;
+    padding: 0.25rem var(--padding);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    box-shadow: 0px 5px 50px 1px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button {
+    background: transparent;
+    font-weight: 600;
+    padding-top: var(--font-size);
+    font-size: calc(var(--font-size) * 1.2 );
+    color: #000;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 1px;
+    position: relative;
+    line-height: 150%;
+}
+
+.menu-button:hover {
+    -webkit-text-fill-color: #000;
+}
+
+.menu-button::before {
+    content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iMjciIHZpZXdCb3g9IjAgMCA0MCAyNyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMC4wOTggMjIuMTkxTDI4LjA3NjIgMjYuMjQ1OEMyNy44NjQ0IDI2LjI5NDQgMjcuNjQzOSAyNi4zMjAxIDI3LjQxNzMgMjYuMzIwMUgxMi4zNjc2QzEyLjIxNTMgMjYuMzIwMSAxMi4wNjU2IDI2LjMwODUgMTEuOTE5NiAyNi4yODYxTDkuNzgxNTYgMjEuOTk4M0MxMC4yNzY2IDIxLjA3NzYgMTEuMjQ5IDIwLjQ1MTcgMTIuMzY3NiAyMC40NTE3SDI3LjQxNzNDMjguNjEyMyAyMC40NTE3IDI5LjY0MDUgMjEuMTY2IDMwLjA5OCAyMi4xOTFaTTM1LjQxMzQgMTEuNTMwOEwzMi44NDEgMTYuNjg5OEMyOS4zNjMgMTcuMjE0NCAyNC44OTU5IDE3LjUyOTkgMjAuMDIzNSAxNy41Mjk5QzE1LjExNSAxNy41Mjk5IDEwLjYxNzggMTcuMjA5NyA3LjEyODc5IDE2LjY3ODFMNC41NjkyNSAxMS41NDQ4QzguMjUzNjkgMTAuNzM4OSAxMy44MDkgMTAuMjI1NyAyMC4wMjM1IDEwLjIyNTdDMjYuMjAxOSAxMC4yMjU3IDMxLjcyODggMTAuNzMyOSAzNS40MTM0IDExLjUzMDhaTTQwIDIuMzMyMkwzNy41MjA5IDcuMzA0MTFIMi40NTQ3NEwwIDIuMzgxMDRDMC41MzI4NzYgMS44MTQ1NiAxLjI4OTM2IDEuNDYwODIgMi4xMjg0NiAxLjQ2MDgySDIuNjI0NDJDNi4wOTc0MyAwLjU4NzU0IDEyLjU4ODggMCAyMC4wMjM1IDBDMjcuNDU4MyAwIDMzLjk0OTYgMC41ODc1NCAzNy40MjI2IDEuNDYwODJIMzcuOTE4NkMzOC43MzMzIDEuNDYwODIgMzkuNDcwMSAxLjc5NDMgNDAgMi4zMzIyWiIgZmlsbD0iI0ZBQjYyRiIvPgo8L3N2Zz4K");
+    position: absolute;
+    top: -0.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo > h1 > span {
+    display: block;
+    font-size: var(--font-size);
+}
+
+h3 {
     font-size: calc(var(--font-size) * 2.5);
     font-family: "AdigianaExtreme", Arial, Helvetica, sans-serif;
     line-height: 1.2;
 }
 
-
+.category-title {
+    margin: calc(var(--font-size) * 4) 0 calc(var(--font-size) * 3) var(--padding);
+    font-size: calc(var(--font-size) * 4);
+    font-family: "CyrillicCompressed", Arial, Helvetica, sans-serif;
+    color: #B03F31;
+    -webkit-text-fill-color: #fff;
+    -webkit-text-stroke: 0.05px;
+}
 .phone {
 }
 .button {
@@ -137,8 +252,8 @@ display: grid;
     -webkit-mask-position: center;
 }
 
-.product p,
-.product h2 {
+.product > p,
+.product > h3 {
     width: fit-content;
     align-self: flex-start;
     padding: 1.5rem 1rem 0;
@@ -146,7 +261,7 @@ display: grid;
     color: #fff;
 }
 
-.product h2 {
+.product > h3 {
     font-weight: normal;
 }
 
@@ -167,20 +282,20 @@ display: grid;
     background: #9F523C;
 }
 
-.product:nth-of-type(1n) h2 {
+.product:nth-of-type(1n) h3 {
     color: #D8AB51;
 
 }
 
-.product:nth-of-type(2n) h2 {
+.product:nth-of-type(2n) h3 {
     color: #DB1E06;
 }
 
-.product:nth-of-type(3n) h2 {
+.product:nth-of-type(3n) h3 {
     color: #B74F64;
 }
 
-.product:nth-of-type(4n) h2 {
+.product:nth-of-type(4n) h3 {
     color: #FAB62F;
 }
 
@@ -262,7 +377,7 @@ display: grid;
     color: #fff;
     font-size: var(--font-size);
     font-weight: bold;
-    transition: font-size 0.1s ease;
+    transition: all 0.1s ease;
 }
 
 .add-to-cart button:hover {
@@ -273,12 +388,10 @@ display: grid;
     background: #FAB62F;
 }
 
-.add-to-cart button:focus {
-    box-shadow: 1px 1px 25px red;
-}
+
 
 span.price {
-    font-size: calc(var(--font-size) * 2);
+    font-size: calc(var(--font-size) * 2.25);
     color: #000;
     -webkit-text-fill-color: #fff;
     -webkit-text-stroke: 1px;
@@ -312,4 +425,31 @@ span.price {
     100% {
         transform:rotate(360deg);
     }
+}
+
+footer {
+    margin-top: calc(var(--font-size) * 4.5);
+    padding: calc(var(--font-size) * 2.5) calc(var(--padding) * 2);
+    border-width: 2px 2px 0px 2px;
+    border-style: dashed;
+    border-color: #1D922A;
+    border-radius: 4px;
+}
+
+.social {
+    list-style: none;
+    font-size: calc(var(--font-size) * 1.2 );
+}
+
+.social > li {
+    padding-bottom: var(--font-size);
+}
+.social > li > a {
+    font-size: calc(var(--font-size) * 1.2 );
+    max-width: fit-content;
+    word-break: break-word;
+    color: #000;
+    font-family: "CyrillicCompressed", Arial, Helvetica, sans-serif;
+    line-height: 146%;
+    padding-left: var(--font-size);
 }
