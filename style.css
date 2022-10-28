@@ -185,7 +185,7 @@ h3 {
     font-family: "CyrillicCompressed", Arial, Helvetica, sans-serif;
     color: #B03F31;
     -webkit-text-fill-color: #fff;
-    -webkit-text-stroke: 0.05px;
+    -webkit-text-stroke: 0.5px;
 }
 .phone {
 }
