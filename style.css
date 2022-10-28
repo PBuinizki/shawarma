@@ -40,7 +40,7 @@
 **/
 
 :root {
-    --padding: calc( (100vw - 20rem) / 10 + 2rem );
+    --padding: calc( (100vw - 20rem) / 12 + 1rem );
     --font-size: calc( (100vmax - 20rem) / 200 + 1rem );
     --content: calc( 100vw - (2 * var(--padding)) );
     --card-size: calc( ((100vw - 20rem) / 100 * (25 - 17.5) + 17.5rem ));
@@ -55,12 +55,14 @@ body {
 }
 
 main {
+/*     min-width: var(--content); */
     padding: 0 var(--padding);
     font-size: var(--font-size);
     font-family: "CyrillicCompressed", Arial, Helvetica, sans-serif;
     line-height: 146%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 h2 {
@@ -75,16 +77,15 @@ h2 {
 .button {
 }
 .catalog {
-    max-width: var(--content);
-/*     max-width: calc(var(--content) / 4 * 3 ); */
-/*     flex-shrink: 1; */
+/*     width: 60%;
+    flex-shrink: 1; */
 }
 .sidebar-tabs {
-/*     max-width: calc(var(--content) / 4); */
-/*     min-width: 35rem;
-    flex-grow: 2; */
-/*     border: 1px solid #000;
-    margin-left: calc(var(--padding) / 8);
+/*     max-width: 40%;
+    min-width: 35rem;
+    flex-grow: 2;
+    border: 1px solid #000;
+
     padding: var(--padding); */
 
 }
@@ -95,17 +96,22 @@ h2 {
 
 
 .products {
-    display: flex;
-    flex-flow: row wrap;
-    max-width: var(--content);
-    gap: calc(var(--padding) / 6);
+    width: var(--content);
+display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-size), 20rem)); 
+    grid-template-rows: auto auto;
+    grid-auto-flow: row;
+    justify-content:center;
+    align-content: space-between;
+    grid-column-gap: calc(var(--padding) / 4);
+    grid-row-gap: var(--font-size)
 
 }
 
 
 .product {
     list-style: none;
-    flex: 1 1 var(--card-size);
+
     min-height: 47rem;
     height: 100%;
     border-radius: 15px;
@@ -114,7 +120,6 @@ h2 {
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
-/*     overflow-y: hidden; */
 }
 
 .product p,
@@ -228,6 +233,7 @@ h2 {
 }
 
 .add-to-cart button {
+    will-change: font-size;  
     position: absolute;
     top: 50%;
     left: 50%;
@@ -239,19 +245,33 @@ h2 {
     color: #fff;
     font-size: var(--font-size);
     font-weight: bold;
+    transition: font-size 0.1s ease;
+}
+
+.add-to-cart button:hover {
+    font-size: calc(var(--font-size) * 1.5);
+}
+
+.add-to-cart button:active {
+    content: '-';
+}
+
+.add-to-cart button:focus {
+    box-shadow: 1px 1px 25px red;
 }
 
 span.price {
-    font-size: calc(var(--font-size) * 2.25);
+    font-size: calc(var(--font-size) * 2);
     color: #000;
     -webkit-text-fill-color: #fff;
     -webkit-text-stroke: 1px;
 }
 
 .text-circle {
+    will-change: transform;  
     animation-name: rotation;
     animation-delay: -9s;
-    animation-duration: 15s;
+    animation-duration: 12s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
