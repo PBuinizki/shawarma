@@ -481,7 +481,7 @@ footer {
     max-width: 20rem;
     font-size: calc(var(--font-size) * 1.8);
     font-family: "CyrillicCompressed", Arial, Helvetica, sans-serif;
-    font-weight: 300;
+    line-height: 126%;
     letter-spacing: 0.1em;
     min-height: calc(var(--font-size) * 25);
     color: #7E0E00;
@@ -554,7 +554,7 @@ footer {
 .slick-slide:active > svg,
 .slick-slide:hover > svg
  {
-    transform: translateX(-50%) translateY(-10%) scale(1.2);
+    transform: translateX(-50%) scale(1.2);
 }
 /* Слайд основной */
 .slick-slide.slick-current{}
