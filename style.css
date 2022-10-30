@@ -575,6 +575,10 @@ footer {
     background-size: contain;
     background-color: transparent;
 }
+
+.slick-arrow:hover {
+    filter: invert(0.4);
+}
 /* Стрелка влево */
 .slick-arrow.slick-prev{
     left: calc(50% - 1.5rem);
