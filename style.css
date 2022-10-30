@@ -456,7 +456,7 @@ footer {
 
 /* Слайдер */
 .slick-slider{
-    margin: calc(var(--font-size) * 3) 0;
+    margin: calc(var(--font-size) * 2.5) 0 calc(var(--font-size) * 3.5);
     width: 100%;
     position: relative;
 }
