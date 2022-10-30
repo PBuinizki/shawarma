@@ -1,9 +1,9 @@
 *,*::before,*::after {padding: 0;margin: 0;border: 0;box-sizing: border-box;}
-
+/* 
 *:focus {
     box-shadow: 1px 1px 25px red;
 }
-
+ */
 
 @font-face {
   font-family: "AdigianaExtreme";
@@ -571,18 +571,19 @@ footer {
     width: 3rem;
     height: 3rem;
     transform: translateX(-50%);
-    background-position: top left;
-    background-size: cover;
+    background-position: center;
+    background-size: contain;
+    background-color: transparent;
 }
 /* Стрелка влево */
 .slick-arrow.slick-prev{
     left: calc(50% - 1.5rem);
-    background: url('./img/arrow-prev.svg');
+    background-image: url('./img/arrow-prev1.png');
 }
 /* Стрелка вправо */
 .slick-arrow.slick-next{
     left: calc(50% + 1.5rem);
-    background: url('./img/arrow.svg');
+    background-image: url('./img/arrow1.png');
 }
 /* Стрелка не активная */
 .slick-arrow.slick-disabled{}
