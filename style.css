@@ -506,9 +506,9 @@ footer {
 .slick-slide > svg {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    transition: all 0.5s ease;
-    will-change: auto;
+    transform: translateX(-50%) scale(1.0001);
+    transition: transform 0.5s ease;
+    will-change: transform;
 }
 
 .slick-slide > svg {
