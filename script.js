@@ -8,7 +8,7 @@ $('.slick-slider').slick({
     mobileFirst: true,
     responsive: [
         {
-            breakpoint: 1024,
+            breakpoint: 900,
              settings: {
                     slidesToShow: 3,
                     slidesToScroll: 3,
@@ -17,4 +17,16 @@ $('.slick-slider').slick({
                 }
         }
     ]
+  });
+
+  $('#menu-button').on('click', function() {
+    $('#menu-button, header nav').toggleClass('active');
+    if (!$(this).data('status')) {
+        $(this).html('Закрыть');
+        $(this).data('status', true);
+      }
+      else {
+        $(this).html('Меню');
+        $(this).data('status', false);
+      }
   });
