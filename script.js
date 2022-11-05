@@ -1,9 +1,10 @@
 $('.slick-slider').slick({
-    infinite: true,
+    infinite: false,
     slidesToShow: 1,
     centerMode: true,
     autoplay: true,
     autoplaySpeed: 2000,
+    ocusOnSelect: true,
     slidesToScroll: 1,
     mobileFirst: true,
     responsive: [
@@ -30,3 +31,30 @@ $('.slick-slider').slick({
         $(this).data('status', false);
       }
   });
+
+
+
+
+  $('[id|=category]').each(function(i) {
+      $('ul.nav-menu').append('<li><a href="#'+ this.id +'">'+ this.textContent +'</a></li>');
+  });
+
+$('ul.nav-menu > li > a').on('click', function() {
+
+  $('#menu-button, header nav').toggleClass('active');
+  if (!$('#menu-button').data('status')) {
+      $('#menu-button').html('Закрыть');
+      $('#menu-button').data('status', true);
+    }
+    else {
+      $('#menu-button').html('Меню');
+      $('#menu-button').data('status', false);
+    }  
+    
+  let href = $(this).attr("href");
+  let hrefTop = $(href).offset().top - 100;
+  $("html, body").animate({
+      scrollTop: hrefTop
+  }, 'slow');
+
+});
