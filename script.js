@@ -58,3 +58,28 @@ $('ul.nav-menu > li > a').on('click', function() {
   }, 'slow');
 
 });
+
+
+
+
+$('#whatsapp-send').on('click', function() {
+
+const numberWA = '79271101373';
+
+let textWA = $('#whatsapp-send-text').val();
+
+  if (textWA.length > 3) {
+    sendToWhatsapp(textWA, numberWA);
+  }
+
+
+});
+
+function sendToWhatsapp(text, phone) {
+ 
+  text = encodeURIComponent(text);
+ 
+  let url = `https://api.whatsapp.com/send?phone=${phone}&text=${text}`;
+ 
+  window.open(url);
+}
