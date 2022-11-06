@@ -32,6 +32,10 @@ $('.slick-slider').slick({
       }
   });
 
+  $('#cart-close, #mini-cart').on('click', function() {
+    $('.sidebar-tabs').toggleClass('active');
+  });
+
 
 
 
@@ -72,7 +76,18 @@ let textWA = $('#whatsapp-send-text').val();
     sendToWhatsapp(textWA, numberWA);
   }
 
+});
 
+$('#whatsapp-send-text').on('keypress', function(e) {
+      if(e.which == 13) {
+        const numberWA = '79271101373';
+
+        let textWA = $('#whatsapp-send-text').val();
+        
+          if (textWA.length > 3) {
+            sendToWhatsapp(textWA, numberWA);
+          }
+      }
 });
 
 function sendToWhatsapp(text, phone) {
@@ -83,3 +98,61 @@ function sendToWhatsapp(text, phone) {
  
   window.open(url);
 }
+
+$(window).on('load', function () {
+      $('#load').delay(500).fadeOut('slow');
+      setTimeout(function(){
+/*         $( "#load" ).remove(); */
+        $( "body" ).removeClass( "is-loading" );
+      }, 400);
+      
+
+  });
+  
+
+
+  $( 'body' ).on( 'click', 'button.plus, button.minus', function() {
+ 
+    var qty = $(this).parent().find( 'input' ),
+        val = parseInt( qty.val() ),
+        min = parseInt( qty.attr( 'min' ) ),
+        max = parseInt( qty.attr( 'max' ) ),
+        step = parseInt( qty.attr( 'step' ) );
+   
+    // дальше меняем значение количества в зависимости от нажатия кнопки
+    if ( $( this ).is( '.plus' ) ) {
+      if ( max && ( max <= val ) ) {
+        qty.val( max );
+      } else {
+        qty.val( val + step );
+      }
+    } else {
+      if ( min && ( min >= val ) ) {
+        qty.val( min );
+      } else if ( val > 1 ) {
+        qty.val( val - step );
+      }
+    }
+   
+  });
+
+/*   
+  jQuery( function( $ ) {
+ 
+	$( 'body' ).on( 'click', '.plus, .minus', function() {
+ 
+		// делаем всё, что нужно сделать, меняем количество в полях
+ 
+		input.val( quantity ).change();
+		$( '[name="update_cart"]' ).trigger( 'click' );
+	} );
+ 
+} );
+  
+  
+  */
+
+
+$('form.woocommerce-cart-form').on('click', function( event ) {
+  event.preventDefault();
+});
